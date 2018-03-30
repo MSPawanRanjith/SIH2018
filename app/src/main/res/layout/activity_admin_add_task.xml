@@ -11,52 +11,64 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.administrator.sih2018.AdminAddTaskActivity">
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="65dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp">
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_phase"
+        android:layout_weight="1" />
+
+
+</LinearLayout>
+
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
         android:id="@+id/desc_work">
+
+
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Description of the work"/>
 
     </android.support.design.widget.TextInputLayout>
+
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/geo_lat">
+        android:id="@+id/threshold">
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
-            android:hint="Geo-Latitude"/>
-
+            android:ems="10"
+            android:hint="Threshold allowed"
+            android:id="@+id/thresh"
+            android:layout_weight="1" />
     </android.support.design.widget.TextInputLayout>
+
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/geo_long">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:hint="Geo-Longitutde"/>
-
-    </android.support.design.widget.TextInputLayout>
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/address">
+        android:id="@+id/dead_line">
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPostalAddress"
             android:ems="10"
-            android:hint="Address Of Site"
-            android:id="@+id/addressofsite"
+            android:hint="Dead Line"
+            android:id="@+id/dateofdead"
             android:layout_weight="1" />
     </android.support.design.widget.TextInputLayout>
 

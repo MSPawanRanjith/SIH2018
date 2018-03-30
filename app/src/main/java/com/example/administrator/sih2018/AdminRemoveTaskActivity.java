@@ -83,9 +83,9 @@ public class AdminRemoveTaskActivity extends AppCompatActivity {
             protected void populateViewHolder(PostviewHolder viewHolder, final AdminAddTaskData model, final int position) {
                 viewHolder.setTitle("Task "+(position+1));
                 viewHolder.setDesc(model.getDescription());
-                viewHolder.setLat(model.getGeolat());
-                viewHolder.setLong(model.getGeolong());
-                viewHolder.setAddress(model.getAddress());
+               // viewHolder.setLat(model.getGeolat());
+               // viewHolder.setLong(model.getGeolong());
+               // viewHolder.setAddress(model.getAddress());
                 if(model.getStatus().equals("1")){
                     viewHolder.setStatus("Task Not Completed");
                 }

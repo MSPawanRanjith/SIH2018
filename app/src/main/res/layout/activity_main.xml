@@ -38,7 +38,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dip"
-            android:text="Verifier"
+            android:text="DataCollector"
             android:textColor="@color/colorPrimaryDark"
             android:background="@color/icons" />
 
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dip"
             android:background="#FFFFFF"
-            android:text="Admin"
+            android:text="Supervisor"
             android:textColor="@color/colorPrimaryDark" />
 
 
@@ -58,4 +58,7 @@
     </LinearLayout>
 
 </LinearLayout>
+
+
+
 

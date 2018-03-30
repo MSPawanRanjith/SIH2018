@@ -109,15 +109,18 @@ public class VerifierWorkSpace extends AppCompatActivity {
             protected void populateViewHolder(VerifierWorkSpace.PostviewHolder viewHolder, AdminAddTaskData model, final int position) {
 
                 viewHolder.setTitle("Task "+(position+1));
-                viewHolder.setDesc(model.getDescription());
-                viewHolder.setLat(model.getGeolat());
-                viewHolder.setLong(model.getGeolong());
-                viewHolder.setAddress(model.getAddress());
+               // viewHolder.setDesc(model.getDescription());
+                viewHolder.setPhase(model.getPhaseSelected());
+                viewHolder.setQuarter(model.getQuarter());
+                viewHolder.setDeadLine(model.getDeadLine());
+              //  viewHolder.setLat(model.getGeolat());
+               // viewHolder.setLong(model.getGeolong());
+               // viewHolder.setAddress(model.getAddress());
 
                 //Setting Required stuffs
                 Astatus.add(model.getStatus());
-                Alat.add(Double.parseDouble(model.getGeolat()));
-                Along.add(Double.parseDouble(model.getGeolong()));
+               // Alat.add(Double.parseDouble(model.getGeolat()));
+                //Along.add(Double.parseDouble(model.getGeolong()));
 
 
 
@@ -247,6 +250,22 @@ public class VerifierWorkSpace extends AppCompatActivity {
             posttitle.setText(mJobaddress);
 
         }
+        public void setPhase(String mPhase){
+            TextView posttitle=(TextView)mview.findViewById(R.id.phase_verifier);
+            posttitle.setText(mPhase);
+
+        }
+        public void setQuarter(String mQuarter){
+            TextView posttitle=(TextView)mview.findViewById(R.id.quarter_verifier);
+            posttitle.setText(mQuarter);
+
+        }
+        public void setDeadLine(String mDeadLine){
+            TextView posttitle=(TextView)mview.findViewById(R.id.deadline_verifier);
+            posttitle.setText(mDeadLine);
+
+        }
+
 
 
     }

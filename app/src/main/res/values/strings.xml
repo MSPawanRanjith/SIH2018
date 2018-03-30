@@ -70,4 +70,10 @@
     <string name="title_activity_fingerprint_authentication_dialog_fragment">
         FingerprintAuthenticationDialogFragment
     </string>
+
+    <string-array name="phase">
+        <item name="phase1">Phase 1</item>
+        <item name="phase2">Phase 2</item>
+        <item name="education">Education</item>
+    </string-array>
 </resources>

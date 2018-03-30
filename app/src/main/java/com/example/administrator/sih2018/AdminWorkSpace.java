@@ -30,6 +30,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class AdminWorkSpace extends AppCompatActivity {
@@ -53,6 +55,17 @@ public class AdminWorkSpace extends AppCompatActivity {
         auth=FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         Firebase.setAndroidContext(this);
+
+//        mDatabase.child("fire").addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                dataSnapshot.
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
 
         contactnumber=new ArrayList<>();
         Aempuid=new ArrayList<>();
@@ -109,6 +122,7 @@ public class AdminWorkSpace extends AppCompatActivity {
                 viewHolder.setEmpid(model.getEmpid());
                 viewHolder.setConatct(model.getContact());
                 viewHolder.setEmail(model.getEmail());
+                viewHolder.setRegion(model.getRegion());
                 contactnum=Long.parseLong(model.getContact());
                 emailadd.add(model.getEmail());
                 mEmpuid=model.getEmpuid();
@@ -246,7 +260,10 @@ public class AdminWorkSpace extends AppCompatActivity {
             posttitle.setText(empemail);
 
         }
-
+        public void setRegion(String empregion){
+            TextView posttile=(TextView)mview.findViewById(R.id.emp_region);
+            posttile.setText(empregion);
+        }
 
     }
 }
