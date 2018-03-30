@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/emp_name"
+                android:textColor="@color/colorPrimaryDark"
+                android:text="title "
+                android:textSize="24dp"
+                android:textStyle="bold"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="4dp"
+                android:paddingTop="4dp"/>
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:paddingRight="12dp"
+
+            android:text="Emp-ID "
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:paddingLeft="12dp"
+            android:paddingBottom="4dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="12dp"
+            android:id="@+id/emp_id"
+            android:text="id "
+            android:textSize="18dp"
+            android:paddingLeft="12dp"
+            android:paddingBottom="4dp" />
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:paddingRight="12dp"
+
+            android:text="Contact "
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:paddingLeft="12dp"
+            android:paddingBottom="4dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="12dp"
+            android:id="@+id/emp_contact"
+            android:text="conatct "
+            android:textSize="18dp"
+            android:paddingLeft="12dp"
+            android:paddingBottom="4dp" />
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:paddingRight="12dp"
+
+            android:text="Email-id"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:paddingLeft="12dp"
+            android:paddingBottom="4dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="12dp"
+            android:id="@+id/emp_email"
+            android:text="email "
+            android:textSize="18dp"
+            android:paddingLeft="12dp"
+            android:paddingBottom="4dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+</android.support.v7.widget.CardView>

@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "270347039782",
+    "firebase_url": "https://pragatimannya.firebaseio.com",
+    "project_id": "pragatimannya",
+    "storage_bucket": "pragatimannya.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:270347039782:android:277c0498f9389478",
+        "android_client_info": {
+          "package_name": "com.example.administrator.pragatimannya"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "270347039782-qv46pbmot80eagd7n8guuac30o8a7uvj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.administrator.pragatimannya",
+            "certificate_hash": "550acb58a7ec736bc420d684286332ae856daa97"
+          }
+        },
+        {
+          "client_id": "270347039782-k974qgcvjs5ma1109qbgp3i9p1l4ona3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeVd6nqdf-McXcJ0zXiAjEsII-t4GFX7w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "270347039782-k974qgcvjs5ma1109qbgp3i9p1l4ona3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:270347039782:android:c3660f25a88c5b02",
+        "android_client_info": {
+          "package_name": "com.example.administrator.sih2018"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "270347039782-nh14aeuqjr1hejuugihso96mgf4knrkc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.administrator.sih2018",
+            "certificate_hash": "550acb58a7ec736bc420d684286332ae856daa97"
+          }
+        },
+        {
+          "client_id": "270347039782-k974qgcvjs5ma1109qbgp3i9p1l4ona3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeVd6nqdf-McXcJ0zXiAjEsII-t4GFX7w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "270347039782-k974qgcvjs5ma1109qbgp3i9p1l4ona3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
