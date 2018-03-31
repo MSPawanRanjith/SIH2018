@@ -128,59 +128,8 @@ public class VerifierWorkSpace extends AppCompatActivity {
                 viewHolder.mview.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
-                        Log.d("card","size "+Alat.get(Alat.size()-position-1));
-                        Log.d("card","size "+(Along.size()-position-1));
-                        Log.d("card","size "+Along.get(Along.size()-position-1));
-                        Log.d("card","size "+Astatus.get(Astatus.size()-position-1));
-                        Log.d("card","size "+AparentNode.get(position));
-
-                        if (Astatus.get(Astatus.size()-position-1).equals("1")) {
-
-                            AlertDialog.Builder builder = new AlertDialog.Builder(VerifierWorkSpace.this);
-
-                            builder.setTitle("Proceed");
-                            builder.setMessage("Are you sure?");
-
-                            builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-
-                                public void onClick(DialogInterface dialog, int which) {
-                                    // Do nothing but close the dialog
-                                    Intent intent=new Intent(VerifierWorkSpace.this,ValidateGPSActivity.class);
-                                    intent.putExtra("GEO_LAT",Alat.get(Alat.size()-position-1));
-                                    intent.putExtra("GEO_LONG",Along.get(Along.size()-position-1));
-                                    intent.putExtra("PARENT_KEY",AparentNode.get(position));
-                                    intent.putExtra("UID_VERIFY",uid);
-                                    dialog.dismiss();
-                                    startActivity(intent);
-
-                                }
-                            });
-
-                            builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-
-                                    // Do nothing
-                                    dialog.dismiss();
-                                }
-                            });
-
-                            AlertDialog alert = builder.create();
-                            alert.show();
-                        }
-                        else{
-                            Snackbar.make(view,"This task has been already completed",Snackbar.LENGTH_LONG)
-                                    .setAction("CLOSE", new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View view) {
-
-                                        }
-                                    })
-                                    .setActionTextColor(getResources().getColor(android.R.color.holo_red_light))
-                                    .show();
-                        }
+                        Intent intent=new Intent(VerifierWorkSpace.this,VerifierTaskListActivity.class);
+                        startActivity(intent);
                     }
                 });
 
