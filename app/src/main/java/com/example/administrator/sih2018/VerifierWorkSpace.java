@@ -122,7 +122,7 @@ public class VerifierWorkSpace extends AppCompatActivity {
                // Alat.add(Double.parseDouble(model.getGeolat()));
                 //Along.add(Double.parseDouble(model.getGeolong()));
 
-
+                //Alat
 
 
                 viewHolder.mview.setOnClickListener(new View.OnClickListener() {
