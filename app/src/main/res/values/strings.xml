@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SIH</string>
+    <string name="app_name">ICP</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_main">MainActivity</string>
 
@@ -70,10 +70,30 @@
     <string name="title_activity_fingerprint_authentication_dialog_fragment">
         FingerprintAuthenticationDialogFragment
     </string>
+    <string name="sign_finger">SIGN-IN USING Fingerprint</string>
+    <!-- Added by Divya-->
+    <string name="itemdesc">Description of the work</string>
+    <string name="threshold">Threshold allowed</string>
+    <string name="DeadLine">Deadline</string>
+    <string name="Assign">Assign The Task </string>
+    <string name="DataCollector">DataCollector</string>
+    <string name="supervisor">Supervisor</string>
+
+    <string name="Save">Save</string>
+    <string name="Price">Price</string>
+    <string name="Address">Address</string>
 
     <string-array name="phase">
         <item name="phase1">Phase 1</item>
         <item name="phase2">Phase 2</item>
         <item name="education">Education</item>
+    </string-array>
+
+    <string-array name="qtymou">
+        <item name="KG">KG</item>
+        <item name="Dozen">Dozen (12 Nos)</item>
+        <item name="Lb">Pound</item>
+        <item name="Litre">Litre</item>
+        <item name="Ounce">Ounces</item>
     </string-array>
 </resources>

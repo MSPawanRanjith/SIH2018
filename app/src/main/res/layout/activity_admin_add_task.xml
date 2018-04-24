@@ -37,7 +37,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Description of the work"/>
+            android:hint="@string/itemdesc"/>
 
     </android.support.design.widget.TextInputLayout>
 
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:ems="10"
-            android:hint="Threshold allowed"
+            android:hint="@string/threshold"
             android:id="@+id/thresh"
             android:layout_weight="1" />
     </android.support.design.widget.TextInputLayout>
@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPostalAddress"
             android:ems="10"
-            android:hint="Dead Line"
+            android:hint="@string/DeadLine"
             android:id="@+id/dateofdead"
             android:layout_weight="1" />
     </android.support.design.widget.TextInputLayout>
@@ -84,7 +84,7 @@
             android:textColor="#ffff"
             android:background="@color/colorPrimary"
             android:textSize="15dp"
-            android:text="Assign The Task "
+            android:text="@string/Assign"
             />
     </LinearLayout>
 

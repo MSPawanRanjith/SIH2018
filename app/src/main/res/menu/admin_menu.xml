@@ -4,7 +4,7 @@
     <item
         android:id="@+id/action_remove"
         android:orderInCategory="50"
-        android:title="Remove task"
+        android:title="Task Status"
         app:showAsAction="always" />
 
     <item

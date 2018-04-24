@@ -50,11 +50,20 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class ValidateGPSActivity extends FragmentActivity implements OnMapReadyCallback,GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, LocationListener {
@@ -65,7 +74,8 @@ public class ValidateGPSActivity extends FragmentActivity implements OnMapReadyC
     Marker mCurrLocationMarker;
     LocationRequest mLocationRequest;
     ProgressDialog mProgress,mUpload;
-    Double mRecievedLat,mRecievedLong;
+    String mRecievedAddress;
+    Double mRecievedLong;
     Double mCurrLat,mCurrLong;
     private final static int CAMERA_REQUEST_CODE=1;
     DatabaseReference mDatabase;
@@ -73,9 +83,9 @@ public class ValidateGPSActivity extends FragmentActivity implements OnMapReadyC
     public  Uri photoURI;
     Uri file,currentImageUri;
     public File mediaStorageDir,imagePath;
-
+    public boolean sucess=false;
     CaameraPhoto cameraPhoto;
-
+    String mResposnseString;
 
     //helper for photoURi
 
@@ -183,18 +193,18 @@ public class ValidateGPSActivity extends FragmentActivity implements OnMapReadyC
         mCurrLocationMarker = mMap.addMarker(markerOptions);
 
        // TextView text = (TextView) findViewById(R.id.textView);
-        mRecievedLat=getIntent().getDoubleExtra("GEO_LAT",0.0);
-        mRecievedLong=getIntent().getDoubleExtra("GEO_LONG",0.0);
+        mRecievedAddress=getIntent().getStringExtra("ADDRESS");
+        //mRecievedLong=getIntent().getDoubleExtra("GEO_LONG",0.0);
 
-        Log.d("GeoLatitude",Double.toString(mRecievedLat));
-        Log.d("GeoLangitude",Double.toString(mRecievedLong));
+        //Log.d("GeoLatitude",Double.toString(mRecievedAddress));
+        //Log.d("GeoLangitude",Double.toString(mRecievedLong));
 
         DecimalFormat df = new DecimalFormat("#.####");
-        mRecievedLat = Double.valueOf(df.format(mRecievedLat));
-        mRecievedLong=Double.valueOf(df.format(mRecievedLong));
+        //mRecievedLat = Double.valueOf(df.format(mRecievedLat));
+        //mRecievedLong=Double.valueOf(df.format(mRecievedLong));
 
-        Log.d("GPS LOCATION", Double.toString(location.getLatitude()) + " Latitude");
-        Log.d("GPS LOCATION", Double.toString(location.getLongitude()) + " Longitude");
+        //Log.d("GPS LOCATION", Double.toString(location.getLatitude()) + " Latitude");
+        //Log.d("GPS LOCATION", Double.toString(location.getLongitude()) + " Longitude");
 
         mCurrLat=Double.valueOf(df.format(location.getLatitude()));
         mCurrLong=Double.valueOf(df.format(location.getLongitude()));
@@ -205,75 +215,67 @@ public class ValidateGPSActivity extends FragmentActivity implements OnMapReadyC
         Log.d("GPS LOCATION trim", mCurrLong+ " Longitude");
 
 
+
+
         //Actual working stuff
+        OkHttpClient client =new OkHttpClient();
+        Request request = new Request.Builder().url("https://maps.google.com/maps/api/geocode/json?latlng="+mCurrLat+","+mCurrLong+"&key=AIzaSyC-SY8PWH-BL_lm14Rm9axJNH2FOo-Z3sE").build();
 
+        Call call =client.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.d("Notification message ","Inside onFailure");
 
-        Log.d("GeoLatitude",Double.toString(mRecievedLat));
-        Log.d("GeoLangitude",Double.toString(mRecievedLong));
-        if((mRecievedLat > mCurrLat-0.0005) && (mRecievedLat<mCurrLat+0.0005) ){
-            //lattitude matches
-            if((mRecievedLong> mCurrLong-0.0005) && (mRecievedLong<mCurrLong+0.0005)){
-                //longitude matches
-                Toast.makeText(getApplicationContext(),"BothMatching",Toast.LENGTH_SHORT).show();
+                return;
 
-                //camera intent
-               // Intent intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+
+                Log.d("Notification message ","Inside onResponse");
+                mResposnseString=response.body().string();
+                Log.d("Notif : ",mResposnseString);
+
+                //parsing json
                 try {
+                    JSONObject mapJson = new JSONObject(mResposnseString);
+                    JSONArray mapResult=mapJson.getJSONArray("results");
+                    String mAddress = mapResult.getJSONObject(0)
+                            .getString("formatted_address");
 
-                    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                        ActivityCompat.requestPermissions(ValidateGPSActivity.this,new String[]{Manifest.permission.CAMERA},CAMERA_REQUEST_CODE);
-                    }else {
-                        if (ActivityCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                            ActivityCompat.requestPermissions(ValidateGPSActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},CAMERA_REQUEST_CODE);
-                        }else{
+                    Log.d("Address found",mAddress);
+                    if(mRecievedAddress.equals(" ")){
+                        throw new Exception();
+                    }
+                    if(mAddress.toLowerCase().contains(mRecievedAddress.toLowerCase())){
 
-                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    File f2=getOutputMediaFile();
-                    file = FileProvider.getUriForFile(this, this.getApplicationContext().getPackageName() + ".provider", f2);
-                    intent.putExtra(MediaStore.EXTRA_OUTPUT, file);
-                    startActivityForResult(intent,CAMERA_REQUEST_CODE);
+                        //Sucess
+                        sucess=true;
+                        Log.d("Sucess !!!","Lol Done FInally");
+                        if(sucess==true){
+                            Intent listIntent=new Intent(ValidateGPSActivity.this,VerifierTaskListActivity.class);
+                            startActivity(listIntent);
+                        }
+                        else{
+                            Toast.makeText(getApplicationContext(),"Location Not Matching",Toast.LENGTH_LONG).show();
+                            Intent listIntent=new Intent(ValidateGPSActivity.this,VerifierTaskListActivity.class);
+                            startActivity(listIntent);
                         }
                     }
-                    //dispatchTakePictureIntent();
-//                    Toast.makeText(getApplicationContext(),"Opening camera",Toast.LENGTH_SHORT).show();
-//                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//                    File f2=getOutputMediaFile();
-//                    file = FileProvider.getUriForFile(this, this.getApplicationContext().getPackageName() + ".provider", f2);
-//                    intent.putExtra(MediaStore.EXTRA_OUTPUT, file);
-//                    startActivityForResult(intent, 1);
-
-//                    Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-//                    File f2=getOutputMediaFile();
-//                    file = FileProvider.getUriForFile(this, this.getApplicationContext().getPackageName() + ".provider", f2);
-//                    intent.putExtra(MediaStore.EXTRA_OUTPUT, file);
-//                    startActivityForResult(intent,CAMERA_REQUEST_CODE);
-
-                    //  Intent camintent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//                    Toast.makeText(getApplicationContext(),"Opening camera",Toast.LENGTH_SHORT).show();
-                     // startActivityForResult(camintent, CAMERA_REQUEST_CODE);
-//                    Toast.makeText(getApplicationContext(),"Opening camera",Toast.LENGTH_SHORT).show();
-                }
-                catch (Exception e){
-
+                }catch(Exception e){
+                    Log.d("Exception " , e.toString());
                 }
 
             }
-            else{
-                Toast.makeText(getApplicationContext(),"Move towards side. GPS Location NOT MATCHED",Toast.LENGTH_LONG).show();
-                Intent intent=new Intent(ValidateGPSActivity.this,VerifierWorkSpace.class);
-                String uid_of=getIntent().getStringExtra("UID_VERIFY");
-                intent.putExtra("UID",uid_of);
-                startActivity(intent);
-            }
+        });
 
-        }
-        else{
-            Toast.makeText(getApplicationContext(),"Move towards front. GPS Location NOT MATCHED",Toast.LENGTH_SHORT).show();
-            Intent intent=new Intent(ValidateGPSActivity.this,VerifierWorkSpace.class);
-            String uid_of=getIntent().getStringExtra("UID_VERIFY");
-            intent.putExtra("UID",uid_of);
-            startActivity(intent);
-        }
+
+
+
+
+
 
         //move map camera
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
@@ -290,55 +292,6 @@ public class ValidateGPSActivity extends FragmentActivity implements OnMapReadyC
     //Camrea activity override
 
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode == CAMERA_REQUEST_CODE && resultCode==RESULT_OK){
-
-            mUpload.setMessage("Uploading...");
-            mUpload.show();
-            //Uri uri=data.getData();
-
-            StorageReference filepath=mStorage.child("LocationPhotos").child(mediaStorageDir.getAbsolutePath());
-            filepath.putFile(file/*cameraPhoto.getPhotoUri()*/).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                   Uri downloadUri=taskSnapshot.getDownloadUrl();
-                   Log.d("Download String url",downloadUri.toString());
-                  try{
-                      mDatabase.child(getIntent().getStringExtra("PARENT_KEY")).child("status")
-                              .setValue(downloadUri.toString());
-
-                      Log.d("Download String url",downloadUri.toString());
-                      Log.d("ParentKey",getIntent().getStringExtra("PARENT_KEY"));
-                  }
-                  catch (Exception e){
-                      e.printStackTrace();
-                      Log.d("PrintStackRace","Prince");
-
-                  }
-
-
-
-                    Toast.makeText(getApplicationContext(),"Photo  uploaded ",Toast.LENGTH_SHORT).show();
-                    mProgress.dismiss();
-                    Toast.makeText(getApplicationContext(),"Photo  uploaded ",Toast.LENGTH_SHORT).show();
-
-                    Intent intent=new Intent(ValidateGPSActivity.this,MainActivity.class);
-                    startActivity(intent);
-
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(getApplicationContext(),"Photo unable to upload",Toast.LENGTH_SHORT).show();
-                }
-            });
-
-        }
-    }
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
@@ -380,22 +333,6 @@ public class ValidateGPSActivity extends FragmentActivity implements OnMapReadyC
         }
     }
 
-    File getOutputMediaFile(){
-         mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES),"CameraDemo"+getIntent().getStringExtra("PARENT_KEY"));
-
-        if (!mediaStorageDir.exists()){
-            if (!mediaStorageDir.mkdirs()){
-                return null;
-            }
-        }
-
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        //  Log.v("path2222222",mediaStorageDir.getPath() + File.separator +"IMG_"+ timeStamp + ".png");
-        return new File(mediaStorageDir.getPath() + File.separator +
-                "IMG_"+ timeStamp + ".jpeg");
-
-    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {

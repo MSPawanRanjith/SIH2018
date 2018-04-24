@@ -58,7 +58,10 @@
         </provider>
 
         <activity android:name=".TestGPSLocation" />
-        <activity android:name=".VerifierTaskListActivity"></activity>
+        <activity android:name=".VerifierTaskListActivity" />
+        <activity android:name=".SqliteDatabaseActivity" />
+        <activity android:name=".VerifierPriceActivity" />
+        <activity android:name=".Report"></activity>
     </application>
 
 </manifest>

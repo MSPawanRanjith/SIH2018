@@ -60,7 +60,7 @@
             tools:targetApi="23"
 
             android:textColor="@color/colorPrimaryDark"
-            android:text="SIGN-IN USING Fingerprint"
+            android:text="@string/sign_finger"
             android:id="@+id/signin" />
 
         <Button style="@android:style/Widget.Material.Button.Colored"

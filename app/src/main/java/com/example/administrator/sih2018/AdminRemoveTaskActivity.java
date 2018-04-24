@@ -74,7 +74,7 @@ public class AdminRemoveTaskActivity extends AppCompatActivity {
         Query userfEvents = mDatabase.orderByChild("adminuid").equalTo(uid);
         firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<AdminAddTaskData, PostviewHolder>(
                 AdminAddTaskData.class,
-                R.layout.list_admin_card,
+                R.layout.list_verify_card,
                 PostviewHolder.class,
                 userfEvents
 
@@ -82,32 +82,35 @@ public class AdminRemoveTaskActivity extends AppCompatActivity {
             @Override
             protected void populateViewHolder(PostviewHolder viewHolder, final AdminAddTaskData model, final int position) {
                 viewHolder.setTitle("Task "+(position+1));
-                viewHolder.setDesc(model.getDescription());
+                //viewHolder.setDesc(model.getDescription());
                // viewHolder.setLat(model.getGeolat());
                // viewHolder.setLong(model.getGeolong());
                // viewHolder.setAddress(model.getAddress());
-                if(model.getStatus().equals("1")){
-                    viewHolder.setStatus("Task Not Completed");
-                }
-                else {
-                    viewHolder.setStatus(model.getStatus());
-                }
+                viewHolder.setPhase(model.getPhaseSelected());
+                viewHolder.setQuarter(model.getQuarter());
+                viewHolder.setDeadLine(model.getDeadLine());
+               // if(model.getStatus().equals("1")){
+                 //   viewHolder.setStatus("Task Not Completed");
+                //}
+                //else {
+                  //  viewHolder.setStatus(model.getStatus());
+                //}
 
                 viewHolder.mview.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(AdminRemoveTaskActivity.this);
 
-                        builder.setTitle("Remove Task");
-                        builder.setMessage("Are you sure?");
+                        builder.setTitle("View Report");
+                        //builder.setMessage("Are you sure?");
 
                         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface dialog, int which) {
                                 // Do nothing but close the dialog
-                                if(model.getStatus().equals("1")) {
-                                    firebaseRecyclerAdapter.getRef(position).removeValue();
-                                }
+                                //if(model.getStatus().equals("1")) {
+                                    startActivity(new Intent(AdminRemoveTaskActivity.this, Report.class));
+                                //}
                                 dialog.dismiss();
                             }
                         });
@@ -171,5 +174,21 @@ public class AdminRemoveTaskActivity extends AppCompatActivity {
             posttitle.setText(mJobstatus);
 
         }
+        public void setPhase(String mPhase){
+            TextView posttitle=(TextView)mview.findViewById(R.id.phase_verifier);
+            posttitle.setText(mPhase);
+
+        }
+        public void setQuarter(String mQuarter){
+            TextView posttitle=(TextView)mview.findViewById(R.id.quarter_verifier);
+            posttitle.setText(mQuarter);
+
+        }
+        public void setDeadLine(String mDeadLine){
+            TextView posttitle=(TextView)mview.findViewById(R.id.deadline_verifier);
+            posttitle.setText(mDeadLine);
+
+        }
+
     }
 }

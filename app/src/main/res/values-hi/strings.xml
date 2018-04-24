@@ -1,0 +1,84 @@
+<resources>
+    <string name="app_name">आईसीपी</string>
+    <!--<string name="hello_blank_fragment">Hello blank fragment</string>-->
+    <!--<string name="title_activity_main">MainActivity</string>-->
+
+    <!--<string name="section_format">Hello World from section: %1$d</string>-->
+
+    <string name="item">मद</string>
+    <!--<string name="application_name">FingerprintDialog</string>-->
+    <string name="action_settings">सेटिंग्स</string>
+    <string name="cancel">रद्द करना</string>
+    <string name="use_password">पासवर्ड का उपयोग</string>
+    <string name="sign_in">साइन इन</string>
+    <string name="ok">ठीक है</string>
+    <string name="password">पारण शब्द</string>
+    <string name="fingerprint_description">फिंगरप्रिंट को जारी रखने की पुष्टि करें</string>
+    <string name="fingerprint_hint">सेंसर को स्पर्श करें</string>
+    <string name="password_description">जारी रखने के लिए अपना स्टोर पासवर्ड दर्ज करें</string>
+    <!--<string name="purchase">Purchase</string>-->
+    <!--<string name="purchase_not_invalidated">Purchase not invalidated</string>-->
+    <!--<string name="purchase_button_not_invalidated_description">-->
+    <!--You can proceed to purchase with this button \n even if a new fingerprint is enrolled-->
+    <!--</string>-->
+
+    <string name="item_title">White Mesh Pluto Backpack</string>
+    <string name="item_price">$62.68</string>
+    <string name="item_description">Mesh backpack in white. Black textile trim throughout.</string>
+    <string name="purchase_done">Purchase successful</string>
+    <string name="new_fingerprint_enrolled_description">A new fingerprint was added to this device, so your password is required.</string>
+    <string name="use_fingerprint_in_future">Use fingerprint in the future</string>
+    <string name="use_fingerprint_to_authenticate_title">प्रमाणीकृत करने के लिए फ़िंगरप्रिंट का उपयोग करें</string>
+    <string name="use_fingerprint_to_authenticate_key">use_fingerprint_to_authenticate_key</string>
+    <string name="description_bugdroid_icon">Android bugdroid image</string>
+    <string name="description_fingerprint_icon">Fingerprint icon</string>
+    <string name="title_activity_newactivity">newactivity</string>
+
+    <string name="fingerprint_not_recognized">प्रमाणीकृत नहीं</string>
+    <string name="fingerprint_success">सफलतापूर्वक प्रमाणीकृत</string>
+    <string name="action_sign_in_short">रजिस्टर</string>
+    <string name="email">ईमेल</string>
+    <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
+    <string name="auth_failed">प्रमाणीकरण विफल रहा, अपना ईमेल और पासवर्ड जांचें या साइन अप करें</string>
+    <string name="change_email">ईमेल बदलें</string>
+    <string name="change_password">पासवर्ड बदलें</string>
+    <string name="send_password_reset_email">पासवर्ड रीसेट ईमेल भेजें</string>
+    <string name="remove_user">Remove user</string>
+    <string name="new_pass">New Password</string>
+    <string name="title_activity_profile">Firebase</string>
+    <string name="title_activity_login">साइन इन</string>
+    <string name="hint_email">ईमेल</string>
+    <string name="hint_password">पारण शब्द</string>
+    <string name="hint_name">पूरा नाम</string>
+    <string name="btn_login">लॉग इन </string>
+    <string name="btn_link_to_register">Not a member? Get registered in Firebase now!</string>
+    <string name="btn_link_to_login">Already registered. Login Me!</string>
+    <string name="title_activity_reset_password">ResetPasswordActivity</string>
+    <string name="btn_forgot_password">क्या आप अपना पासवर्ड  भूल गए?</string>
+    <string name="btn_reset_password">पासवर्ड रीसेट</string>
+    <string name="btn_back"><![CDATA[<< Back]]></string>
+    <string name="hint_new_email">New Email</string>
+    <string name="btn_change">Change</string>
+    <string name="btn_send">भेजना</string>
+    <string name="btn_remove">हटाना</string>
+    <string name="btn_sign_out">साइन आउट</string>
+    <string name="action_setings">Settings</string>
+    <string name="lbl_forgot_password">पासवर्ड भूल गए?</string>
+    <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
+    <string name="title_activity_main_scrolling">MainScrolling</string>
+    <string name="firbase_intialisation">1</string>
+    <string name="title_activity_fingerprint_authentication_dialog_fragment">
+        FingerprintAuthenticationDialogFragment
+    </string>
+    <!-- Added by Divya-->
+    <string name="itemdesc">काम का विवरण</string>
+    <string name="threshold">द्वार</string>
+    <string name="DeadLine">समयसीमा</string>
+    <string name="Assign">कार्य सौंपें</string>
+    <string name="DataCollector">जानकारी संग्रहकर्ता</string>
+    <string name="supervisor">पर्यवेक्षक</string>
+    <string name="sign_finger">फ़िंगरप्रिंट से साइन इन करें</string>
+
+
+
+</resources>
